@@ -2,7 +2,12 @@
 
 <ul>
   <% @tasks.each do |task| %>
-  <li><%= task.title %> - <%= task.completed %> <%= link_to "Show task", "tasks/#{task.id}" %> <%= link_to "Update Task", "tasks/#{task.id}/edit" %>
+  <li><% if task.completed %>
+    <i class="fa-solid fa-square-check"></i>
+  <% else %>
+    <i class="fa-solid fa-square"></i>
+  <% end %>
+  - <%= task.title %> <%= link_to "Show task", "tasks/#{task.id}" %> <%= link_to "Update Task", "tasks/#{task.id}/edit" %>
   <%= link_to "Delete",
             task_path(task),
             method: :delete,
